@@ -16,12 +16,7 @@
   ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "browser": "./dist/esbuild/browser.js",
-  "bin": {
-    "slate-mark-cli": "./dist/esbuild/cli.js"
-  },
   "scripts": {
-    "cli": "ts-node src/cli.ts",
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
     "test": "jest",
     "clean": "rm -rf dist build package",
@@ -42,6 +37,7 @@
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.1",
     "jest": "^26.6.3",
+    "np": "^7.5.0",
     "prettier": "^2.3.2",
     "ts-jest": "^26.5.4",
     "ts-node": "^9.1.1",

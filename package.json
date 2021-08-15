@@ -25,7 +25,8 @@
     "build": "tsc -p tsconfig.json",
     "install-peers": "install-self-peers -- --ignore-scripts",
     "prepare": "npm run build",
-    "release": "np"
+    "release": "np",
+    "dryrun": "npm pack"
   },
   "devDependencies": {
     "@team-griffin/install-self-peers": "^1.1.1",

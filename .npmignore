@@ -15,3 +15,13 @@ package-lock.json
 /tmp*
 /mnt/
 /package/
+
+.editorconfig
+src
+tsconfig.json
+.eslintrc.js
+browser-test.html
+.np-config.js
+jest.config.js
+yarn.lock
+*.code-workspace

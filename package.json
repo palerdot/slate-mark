@@ -24,9 +24,10 @@
     "docs": "typedoc --entryPoints src/index.ts",
     "build": "tsc -p tsconfig.json",
     "install-peers": "install-self-peers -- --ignore-scripts",
-    "prepare": "npm run build",
+    "prepare": "npm run build && npm run copy",
     "release": "np",
-    "dryrun": "npm pack"
+    "dryrun": "npm pack",
+    "copy": "cp package.json dist/ && cp README.md dist/"
   },
   "devDependencies": {
     "@team-griffin/install-self-peers": "^1.1.1",

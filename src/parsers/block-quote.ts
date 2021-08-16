@@ -25,7 +25,7 @@ export function isBlockQuote(node: SlateNode): boolean {
  */
 
 function parse(input: LeafChildren) {
-  return `> ${parseMarks(input)}\n`
+  return `> ${parseMarks(input)}\n\n`
 }
 
 export default parse

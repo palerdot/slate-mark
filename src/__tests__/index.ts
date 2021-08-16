@@ -249,6 +249,48 @@ const sample_input = [
       },
     ],
   },
+  // block quote variation
+  {
+    type: 'blockquote',
+    children: [
+      {
+        text: 'porumai ',
+      },
+      {
+        text: 'patience ',
+        bold: true,
+      },
+      {
+        text: 'amaidhi',
+        italic: true,
+      },
+    ],
+  },
+  // single line variation
+  {
+    type: 'paragraph',
+    children: [
+      {
+        text: 'porumai ',
+      },
+      {
+        text: 'patience ',
+        bold: true,
+      },
+      {
+        text: 'amaidhi',
+        italic: true,
+      },
+    ],
+  },
+  {
+    type: 'p',
+    children: [
+      {
+        text: '',
+      },
+    ],
+  },
 ]
 
 /* const complex_input = [
@@ -379,20 +421,27 @@ describe('Slate => Markdown, works fine', () => {
     const EXPECTED = `porumai
 
 > wait and hope
+
 \`\`\`
 porumai code block
 \`\`\`
+
 ### unordered list
 * porumai
 * amaidhi
 * patience
+
 ### ordered list
-1) porumai
-2) amaidhi
-3) patience
+1. porumai
+2. amaidhi
+3. patience
+
 [] porumai
 [] amaidhi
 [x] patience
+> porumai **patience ***amaidhi*
+
+porumai **patience ***amaidhi*
 `
 
     console.log('porumai ... transformed ', plateToMarkdown(sample_input))

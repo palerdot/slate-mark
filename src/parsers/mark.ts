@@ -28,7 +28,7 @@ function parseItalicText({ text }: LeafNode) {
 }
 
 function parseInlineCode({ text }: LeafNode) {
-  return `\`${text}\`\n`
+  return `\`${text}\``
 }
 
 export function parseMark(input: LeafNode): string {

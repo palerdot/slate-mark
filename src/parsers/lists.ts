@@ -211,11 +211,11 @@ function parse(node: SlateNode) {
   // now we have the list items
   // let us construct the list
   listItems.forEach((text, index) => {
-    const prefix = node.type === NodeType.OrderedList ? `${index + 1})` : '*'
+    const prefix = node.type === NodeType.OrderedList ? `${index + 1}.` : '*'
     FINAL_TEXT += `${prefix} ${text}\n`
   })
 
-  return FINAL_TEXT
+  return FINAL_TEXT + '\n'
 }
 
 export default parse

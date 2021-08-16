@@ -1,4 +1,5 @@
-import { NodeType, LeafNode, SlateNode, isLeaf } from '../utils'
+import { NodeType, SlateNode, isLeaf, LeafChildren } from '../utils'
+import { parseMarks } from './mark'
 
 /* 
  'Paragraph' detection
@@ -22,8 +23,8 @@ export function isParagraph(node: SlateNode): boolean {
  * Output: text + '\n'
  */
 
-function parse({ text }: LeafNode) {
-  return `${text}\n`
+function parse(input: LeafChildren) {
+  return `${parseMarks(input)}\n`
 }
 
 export default parse

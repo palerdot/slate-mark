@@ -5,11 +5,10 @@
  * - parses the identified node type depending on type to final string
  *
  */
-import { LeafType, SlateNode, isLeaf } from '../utils'
+import { SlateNode, isLeaf } from '../utils'
 
 // individual parsers
 import paragraphParser, { isParagraph } from './paragraph'
-import inlineCodeParser, { isInlineCode } from './inline-code'
 import blockQuoteParser, { isBlockQuote } from './block-quote'
 import codeBlockParser, { isCodeBlock } from './code-block'
 import headingParser, { isHeading } from './heading'
@@ -22,44 +21,44 @@ export function parseNodes(nodes: Array<SlateNode>): string {
 
 // helper function to transform node => string
 function transformNode(node: SlateNode): string {
+  /*
+   * Block level parsing will be done first
+   * (List (Unordered/Ordered), Todo list, Code Block, Block Quote, Headings etc)
+   * Last Paragraph will be dealt
+   */
+
   // TODO: verify if ordering of nodes matter (though we have strict checking of nodes)
-  // for now we are parsing in random order
-  // first going through leaf nodes
-  if (isLeaf(node.children)) {
-    const leafNode = node.children[0]
-
-    // Paragraph
-    if (isParagraph(node)) {
-      return paragraphParser(leafNode)
-    }
-
-    // Inline Code
-    if (isInlineCode(node)) {
-      return inlineCodeParser(leafNode)
-    }
-
-    // Block Quote
-    if (isBlockQuote(node)) {
-      return blockQuoteParser(leafNode)
-    }
-
-    // Code Block
-    if (isCodeBlock(node)) {
-      return codeBlockParser(leafNode)
-    }
-
-    // Heading
-    if (isHeading(node)) {
-      return headingParser(node as LeafType)
-    }
-
-    // some unhandled leaf node
-    return ``
-  }
+  // for now we are parsing in some random order
 
   // Lists - Ordered/Unordered
   if (isList(node)) {
     return listParser(node)
+  }
+
+  // first going through leaf nodes
+  if (isLeaf(node.children)) {
+    // Block Quote
+    if (isBlockQuote(node)) {
+      return blockQuoteParser(node.children)
+    }
+
+    // Code Block
+    if (isCodeBlock(node)) {
+      return codeBlockParser(node.children)
+    }
+
+    // Heading
+    if (isHeading(node)) {
+      return headingParser(node.children, node.type)
+    }
+
+    // Paragraph
+    if (isParagraph(node)) {
+      return paragraphParser(node.children)
+    }
+
+    // some unhandled leaf node
+    return ``
   }
 
   return ``

@@ -1,4 +1,5 @@
-import { NodeType, LeafNode, SlateNode, isLeaf } from '../utils'
+import { NodeType, SlateNode, isLeaf, LeafChildren } from '../utils'
+import { parseMarks } from './mark'
 
 /*  
   blockquote detection
@@ -14,7 +15,7 @@ import { NodeType, LeafNode, SlateNode, isLeaf } from '../utils'
 
  */
 export function isBlockQuote(node: SlateNode): boolean {
-  return isLeaf(node.children) && node.type === NodeType.BlockQuote
+  return node.type === NodeType.BlockQuote && isLeaf(node.children)
 }
 
 /*
@@ -23,8 +24,8 @@ export function isBlockQuote(node: SlateNode): boolean {
  * Output: '> text \n'
  */
 
-function parse({ text }: LeafNode) {
-  return `> ${text} \n`
+function parse(input: LeafChildren) {
+  return `> ${parseMarks(input)} \n`
 }
 
 export default parse

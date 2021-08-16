@@ -1,4 +1,5 @@
-import { NodeType, LeafType, SlateNode, isLeaf } from '../utils'
+import { NodeType, SlateNode, isLeaf, LeafChildren } from '../utils'
+import { parseMarks } from './mark'
 
 /* 
  'Heading' detection
@@ -36,7 +37,9 @@ export function isHeading(node: SlateNode): boolean {
  * h6 => ###### text \n
  */
 
-function parse({ type, children: [{ text }] }: LeafType) {
+function parse(input: LeafChildren, type: string) {
+  const text = parseMarks(input)
+
   // # Heading 1
   if (type === NodeType.H1) {
     return `# ${text} \n`

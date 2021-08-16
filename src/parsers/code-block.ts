@@ -1,4 +1,5 @@
-import { NodeType, LeafNode, SlateNode, isLeaf } from '../utils'
+import { NodeType, LeafChildren, SlateNode, isLeaf } from '../utils'
+import { parseMarks } from './mark'
 
 /* 
  'Code Block' detection
@@ -26,10 +27,10 @@ export function isCodeBlock(node: SlateNode): boolean {
  * \n
  */
 
-function parse({ text }: LeafNode) {
+function parse(input: LeafChildren) {
   const FENCE = '```'
 
-  return `${FENCE}\n${text}\n${FENCE}\n`
+  return `${FENCE}\n${parseMarks(input)}\n${FENCE}\n`
 }
 
 export default parse

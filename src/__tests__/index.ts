@@ -205,6 +205,129 @@ const sample_input = [
   },
 ]
 
+/* const complex_input = [
+  {
+    type: 'blockquote',
+    children: [
+      {
+        text: 'porumai ',
+      },
+      {
+        text: 'wait and hope ',
+        bold: true,
+      },
+      {
+        text: 'amaidhi',
+        italic: true,
+      },
+    ],
+  },
+  {
+    type: 'action_item',
+    children: [
+      {
+        italic: true,
+        text: 'porumai',
+      },
+    ],
+  },
+  {
+    type: 'action_item',
+    children: [
+      {
+        italic: true,
+        text: 'amaidhi',
+      },
+    ],
+  },
+  {
+    type: 'action_item',
+    children: [
+      {
+        italic: true,
+        text: 'patience',
+      },
+    ],
+    checked: true,
+  },
+  {
+    type: 'p',
+    checked: true,
+    children: [
+      {
+        italic: true,
+        text: '',
+      },
+    ],
+  },
+  {
+    type: 'p',
+    checked: true,
+    children: [
+      {
+        text: 'porumai',
+        italic: true,
+        bold: true,
+      },
+    ],
+  },
+  {
+    type: 'p',
+    checked: true,
+    children: [
+      {
+        text: 'amaidhi',
+        bold: true,
+      },
+    ],
+  },
+  {
+    type: 'p',
+    checked: true,
+    children: [
+      {
+        text: 'patience',
+        italic: true,
+      },
+    ],
+  },
+  {
+    type: 'p',
+    children: [
+      {
+        text: '',
+      },
+    ],
+  },
+]
+
+const single_line_variation = [
+  {
+    type: 'paragraph',
+    children: [
+      {
+        text: 'porumai ',
+      },
+      {
+        text: 'patience ',
+        bold: true,
+      },
+      {
+        text: 'amaidhi',
+        italic: true,
+      },
+    ],
+  },
+  {
+    type: 'p',
+    children: [
+      {
+        text: '',
+      },
+    ],
+  },
+] */
+
 describe('Slate => Markdown, works fine', () => {
   test('parser is working fine', () => {
     console.log('porumai ... transformed ', plateToMarkdown(sample_input))

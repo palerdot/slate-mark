@@ -20,11 +20,16 @@ export enum NodeType {
 }
 
 // single leaf node
-export type LeafChildren = [LeafNode]
+export type LeafChildren = Array<LeafNode>
 
-export type LeafNode = {
-  text: string
+interface Mark {
   code?: boolean
+  italic?: boolean
+  bold?: boolean
+}
+
+export interface LeafNode extends Mark {
+  text: string
 }
 
 // export type Children = Array<SlateNode> | LeafChildren
@@ -44,18 +49,14 @@ export type LeafType = {
 // type predicate to assert if we have a leaf (children)
 // leaf node is nothing but [LeafNode]
 export function isLeaf(children: Children): children is LeafChildren {
-  if (children.length !== 1) {
-    return false
-  }
+  let isValid = false
 
-  const onlyChild = children[0]
-  const properties = Object.getOwnPropertyNames(onlyChild)
-  // let us verify if our property has text
-  const hasText = properties.includes('text')
-  // let us verify we don't have children property
-  const noChildren = !properties.includes('children')
+  // a node is leaf, if all its children are leaf
+  children.forEach(node => {
+    isValid = isLeafNode(node)
+  })
 
-  return children.length === 1 && hasText && noChildren
+  return isValid
 }
 
 // type predicate to check if it is leaf node

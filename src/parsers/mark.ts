@@ -20,14 +20,32 @@ function parsePlainText({ text }: LeafNode) {
 }
 
 function parseBoldText({ text }: LeafNode) {
+  // edge case:
+  // if we have a trailing space, do not wrap it with mark
+  if (text.endsWith(' ')) {
+    return `**${text.slice(0, -1)}** `
+  }
+
   return `**${text}**`
 }
 
 function parseItalicText({ text }: LeafNode) {
+  // edge case:
+  // if we have a trailing space, do not wrap it with mark
+  if (text.endsWith(' ')) {
+    return `*${text.slice(0, -1)}* `
+  }
+
   return `*${text}*`
 }
 
 function parseInlineCode({ text }: LeafNode) {
+  // edge case:
+  // if we have a trailing space, do not wrap it with mark
+  if (text.endsWith(' ')) {
+    return `\`${text.slice(0, -1)}\` `
+  }
+
   return `\`${text}\``
 }
 

@@ -439,9 +439,9 @@ porumai code block
 [] porumai
 [] amaidhi
 [x] patience
-> porumai **patience ***amaidhi*
+> porumai **patience** *amaidhi*
 
-porumai **patience ***amaidhi*
+porumai **patience** *amaidhi*
 `
 
     console.log('porumai ... transformed ', plateToMarkdown(sample_input))

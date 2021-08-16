@@ -13,6 +13,7 @@ import blockQuoteParser, { isBlockQuote } from './block-quote'
 import codeBlockParser, { isCodeBlock } from './code-block'
 import headingParser, { isHeading } from './heading'
 import listParser, { isList } from './lists'
+import actionItemParser, { isActionItem } from './action-item'
 
 // helper function to recursively parse nodes to final markdown
 export function parseNodes(nodes: Array<SlateNode>): string {
@@ -37,6 +38,11 @@ function transformNode(node: SlateNode): string {
 
   // first going through leaf nodes
   if (isLeaf(node.children)) {
+    // Action item
+    if (isActionItem(node)) {
+      return actionItemParser(node.children, !!node.checked)
+    }
+
     // Block Quote
     if (isBlockQuote(node)) {
       return blockQuoteParser(node.children)

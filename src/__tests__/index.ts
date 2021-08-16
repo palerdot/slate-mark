@@ -33,6 +33,14 @@ porumai code block
 
 const sample_input = [
   {
+    type: 'p',
+    children: [
+      {
+        text: '',
+      },
+    ],
+  },
+  {
     type: 'paragraph',
     children: [
       {
@@ -127,7 +135,7 @@ const sample_input = [
             type: 'lic',
             children: [
               {
-                text: 'paience',
+                text: 'patience',
               },
             ],
           },
@@ -199,6 +207,44 @@ const sample_input = [
     type: 'p',
     children: [
       {
+        text: '',
+      },
+    ],
+  },
+  {
+    type: 'action_item',
+    children: [
+      {
+        // italic: true,
+        text: 'porumai',
+      },
+    ],
+  },
+  {
+    type: 'action_item',
+    children: [
+      {
+        // italic: true,
+        text: 'amaidhi',
+      },
+    ],
+  },
+  {
+    type: 'action_item',
+    children: [
+      {
+        // italic: true,
+        text: 'patience',
+      },
+    ],
+    checked: true,
+  },
+  {
+    type: 'p',
+    checked: true,
+    children: [
+      {
+        italic: true,
         text: '',
       },
     ],
@@ -330,7 +376,26 @@ const single_line_variation = [
 
 describe('Slate => Markdown, works fine', () => {
   test('parser is working fine', () => {
+    const EXPECTED = `porumai
+
+> wait and hope
+\`\`\`
+porumai code block
+\`\`\`
+### unordered list
+* porumai
+* amaidhi
+* patience
+### ordered list
+1) porumai
+2) amaidhi
+3) patience
+[] porumai
+[] amaidhi
+[x] patience
+`
+
     console.log('porumai ... transformed ', plateToMarkdown(sample_input))
-    expect('porumai').toBe('porumai')
+    expect(plateToMarkdown(sample_input)).toEqual(EXPECTED)
   })
 })

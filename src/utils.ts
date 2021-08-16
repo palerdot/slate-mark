@@ -15,6 +15,7 @@ export enum NodeType {
   // lists
   UnorderedList = 'ul',
   OrderedList = 'ol',
+  ActionItem = 'action_item',
   List = 'li',
   ListChild = 'lic',
 }
@@ -37,6 +38,7 @@ export type Children = Array<SlateNode | LeafNode>
 
 export type SlateNode = {
   type: string
+  checked?: boolean
   children: Children
 }
 

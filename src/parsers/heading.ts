@@ -42,36 +42,36 @@ function parse(input: LeafChildren, type: string) {
 
   // # Heading 1
   if (type === NodeType.H1) {
-    return `# ${text} \n`
+    return `# ${text}\n`
   }
 
   // ## Heading 2
   if (type === NodeType.H2) {
-    return `## ${text} \n`
+    return `## ${text}\n`
   }
 
   // ### Heading 3
   if (type === NodeType.H3) {
-    return `### ${text} \n`
+    return `### ${text}\n`
   }
 
   // #### Heading 4
   if (type === NodeType.H4) {
-    return `#### ${text} \n`
+    return `#### ${text}\n`
   }
 
   // ##### Heading 5
   if (type === NodeType.H5) {
-    return `##### ${text} \n`
+    return `##### ${text}\n`
   }
 
   // ###### Heading 6
   if (type === NodeType.H6) {
-    return `###### ${text} \n`
+    return `###### ${text}\n`
   }
 
   // default
-  return `${text} \n`
+  return `${text}\n`
 }
 
 export default parse

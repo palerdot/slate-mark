@@ -54,11 +54,6 @@
   "engines": {
     "node": ">=12"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint"
-    }
-  },
   "prettier": {
     "trailingComma": "es5",
     "tabWidth": 2,

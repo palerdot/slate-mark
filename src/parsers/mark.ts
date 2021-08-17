@@ -50,7 +50,7 @@ function parseInlineCode({ text }: LeafNode): string {
 }
 
 export function parseMark(input: LeafNode): string {
-  let finalText = {
+  const finalText = {
     text: input.text,
   }
 

@@ -316,8 +316,8 @@ porumai code block
 3. patience
 
 
-[] porumai
-[] amaidhi
+[ ] porumai
+[ ] amaidhi
 [x] patience
 
 > porumai **patience** *amaidhi*

@@ -8,7 +8,10 @@ Compatible with [plate-editor](https://github.com/udecode/plate/) out of the box
 
 ```javascript
 // if using with typescript, import type from '@udecode/plate-core' or `@udecode/plate`
+// please make sure your input has similar strucutre to TNode
 import type { TNode } from '@udecode/plate-core'
+// or 
+// import type { TNode } from '@udecode/plate'
 
 import { plateToMarkdown, plateToMarkdownAsync } from 'slate-mark'
 

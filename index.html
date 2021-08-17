@@ -61,7 +61,40 @@
 				<a href="#slate-mark" id="slate-mark" style="color: inherit; text-decoration: none;">
 					<h1>slate-mark</h1>
 				</a>
-				<p>Slate to Markdown parser</p>
+				<p>Slate to Markdown parser. </p>
+				<p>Compatible with <a href="https://github.com/udecode/plate/">plate-editor</a> out of the box. </p>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<pre><code class="language-javascript"><span style="color: #008000">// if using with typescript, import type from &#039;@udecode/plate-core&#039; or `@udecode/plate`</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #AF00DB">type</span><span style="color: #000000"> { </span><span style="color: #001080">TNode</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@udecode/plate-core&#039;</span>
+
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">plateToMarkdown</span><span style="color: #000000">, </span><span style="color: #001080">plateToMarkdownAsync</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;slate-mark&#039;</span>
+
+<span style="color: #008000">// input type is `TNode` (https://plate-api.udecode.io/modules.html#tnode)</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">myInput</span><span style="color: #000000">: </span><span style="color: #267F99">TNode</span><span style="color: #000000"> = [</span>
+<span style="color: #000000">    {</span>
+<span style="color: #000000">    </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;p&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">children:</span><span style="color: #000000"> [</span>
+<span style="color: #000000">      {</span>
+<span style="color: #000000">        </span><span style="color: #001080">text:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Hello `universe !!!`&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      },</span>
+<span style="color: #000000">    ],</span>
+<span style="color: #000000">  },</span>
+<span style="color: #000000">  ...</span>
+<span style="color: #000000">]</span>
+
+<span style="color: #008000">// sync version</span>
+<span style="color: #008000">// output will be a markdown string</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">output</span><span style="color: #000000"> = </span><span style="color: #795E26">plateToMarkdown</span><span style="color: #000000">(</span><span style="color: #001080">myInput</span><span style="color: #000000">)</span>
+
+<span style="color: #008000">// async/promise version</span>
+<span style="color: #795E26">plateToMarkdownAsync</span><span style="color: #000000">(</span><span style="color: #001080">myInput</span><span style="color: #000000">)</span>
+<span style="color: #000000">    .</span><span style="color: #795E26">then</span><span style="color: #000000">(</span><span style="color: #001080">result</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        </span><span style="color: #008000">// result will be a markdown string</span>
+<span style="color: #000000">    })</span>
+</code></pre>
+				<p><em>Please make sure you have either <code>@udecode/plate-core</code> or <code>@udecode/plate</code> as your dependency if you are using it with typescript. The input type for the parser utility functions is <a href="https://plate-api.udecode.io/modules.html#tnode">TNode</a></em></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -76,6 +109,9 @@
 				<ul class="before-current">
 					<li class=" tsd-kind-function">
 						<a href="modules.html#platetomarkdown" class="tsd-kind-icon">plate<wbr>ToMarkdown</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#platetomarkdownasync" class="tsd-kind-icon">plate<wbr>ToMarkdown<wbr>Async</a>
 					</li>
 				</ul>
 			</nav>

@@ -1,9 +1,11 @@
-import { NodeType, SlateNode, isLeaf, LeafChildren } from '../utils'
+import { NodeType, SlateNode, isLeaf, isLeafNode, Children } from '../utils'
 import { parseMarks } from './mark'
+import { parseNodes } from '../parsers'
 
 /*  
   blockquote detection
 
+  // variation 1
   {
     type: 'blockquote',
     children: [
@@ -13,9 +15,24 @@ import { parseMarks } from './mark'
     ],
   },
 
+  // variation 2
+  {
+    type: 'blockquote',
+    children: [
+      {
+        type: 'p',
+        children: [
+          {
+            text: 'wait and hope',
+          },  
+        ]
+      }
+    ]
+  }
+
  */
 export function isBlockQuote(node: SlateNode): boolean {
-  return node.type === NodeType.BlockQuote && isLeaf(node.children)
+  return node.type === NodeType.BlockQuote
 }
 
 /*
@@ -24,8 +41,46 @@ export function isBlockQuote(node: SlateNode): boolean {
  * Output: '> text \n'
  */
 
-function parse(input: LeafChildren): string {
-  return `> ${parseMarks(input)}\n\n`
+function parse(input: Children): string {
+  const PREFIX = `> `
+  const SUFFIX = '\n\n'
+
+  let content = ''
+
+  if (isLeaf(input)) {
+    /*  
+      // variation 1
+      [
+        {
+          text: 'wait and hope',
+        },
+      ],
+     */
+
+    content = parseMarks(input)
+  } else {
+    /*  
+      // variation 2
+      [
+          {
+            type: 'p',
+            children: [
+              {
+                text: 'wait and hope',
+              },  
+            ]
+          }
+      ]
+    */
+
+    const nonLeafNodes: Array<SlateNode> = input.filter((a): a is SlateNode => {
+      return !isLeafNode(a)
+    })
+
+    content = parseNodes(nonLeafNodes)
+  }
+
+  return `${PREFIX}${content}${SUFFIX}`
 }
 
 export default parse

@@ -254,6 +254,20 @@ const sample_input = [
     type: 'blockquote',
     children: [
       {
+        type: 'p',
+        children: [
+          {
+            text: 'wait and hope ... (nested paragraph within blockquote)',
+          },
+        ],
+      },
+    ],
+  },
+  // block quote variation
+  {
+    type: 'blockquote',
+    children: [
+      {
         text: 'porumai ',
       },
       {
@@ -319,6 +333,9 @@ porumai code block
 [ ] porumai
 [ ] amaidhi
 [x] patience
+
+> wait and hope ... (nested paragraph within blockquote)
+
 
 > porumai **patience** *amaidhi*
 

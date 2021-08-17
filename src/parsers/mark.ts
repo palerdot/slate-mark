@@ -15,11 +15,11 @@ import { LeafNode, LeafChildren } from '../utils'
  * Takes care of composite text content (code + bold + italic etc)
  */
 
-function parsePlainText({ text }: LeafNode) {
+function parsePlainText({ text }: LeafNode): string {
   return `${text}`
 }
 
-function parseBoldText({ text }: LeafNode) {
+function parseBoldText({ text }: LeafNode): string {
   // edge case:
   // if we have a trailing space, do not wrap it with mark
   if (text.endsWith(' ')) {
@@ -29,7 +29,7 @@ function parseBoldText({ text }: LeafNode) {
   return `**${text}**`
 }
 
-function parseItalicText({ text }: LeafNode) {
+function parseItalicText({ text }: LeafNode): string {
   // edge case:
   // if we have a trailing space, do not wrap it with mark
   if (text.endsWith(' ')) {
@@ -39,7 +39,7 @@ function parseItalicText({ text }: LeafNode) {
   return `*${text}*`
 }
 
-function parseInlineCode({ text }: LeafNode) {
+function parseInlineCode({ text }: LeafNode): string {
   // edge case:
   // if we have a trailing space, do not wrap it with mark
   if (text.endsWith(' ')) {

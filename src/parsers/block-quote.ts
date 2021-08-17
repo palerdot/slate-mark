@@ -24,7 +24,7 @@ export function isBlockQuote(node: SlateNode): boolean {
  * Output: '> text \n'
  */
 
-function parse(input: LeafChildren) {
+function parse(input: LeafChildren): string {
   return `> ${parseMarks(input)}\n\n`
 }
 

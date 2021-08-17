@@ -27,7 +27,7 @@ export function isCodeBlock(node: SlateNode): boolean {
  * \n
  */
 
-function parse(input: LeafChildren) {
+function parse(input: LeafChildren): string {
   const FENCE = '```'
 
   return `${FENCE}\n${parseMarks(input)}\n${FENCE}\n\n`

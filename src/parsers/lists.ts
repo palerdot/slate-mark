@@ -191,7 +191,7 @@ export function isList(node: SlateNode): boolean {
  *
  */
 
-function parse(node: SlateNode) {
+function parse(node: SlateNode): string {
   if (!isList(node)) {
     return ``
   }

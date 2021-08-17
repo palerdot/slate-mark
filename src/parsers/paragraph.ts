@@ -23,7 +23,7 @@ export function isParagraph(node: SlateNode): boolean {
  * Output: text + '\n'
  */
 
-function parse(input: LeafChildren) {
+function parse(input: LeafChildren): string {
   return `${parseMarks(input)}\n`
 }
 

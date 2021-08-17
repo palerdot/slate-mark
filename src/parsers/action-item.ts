@@ -46,7 +46,7 @@ export function isActionItem(node: SlateNode): boolean {
  * [x] Checked \n
  */
 
-function parse(input: LeafChildren, checked: boolean) {
+function parse(input: LeafChildren, checked: boolean): string {
   const prefix = checked ? '[x]' : '[]'
 
   return `${prefix} ${parseMarks(input)}\n`

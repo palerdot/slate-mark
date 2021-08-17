@@ -1,4 +1,4 @@
-import { plateToMarkdown } from '../'
+import { plateToMarkdown, plateToMarkdownAsync } from '../'
 
 /*  
  
@@ -293,6 +293,32 @@ const sample_input = [
   },
 ]
 
+const EXPECTED = `porumai
+
+> wait and hope
+
+\`\`\`
+porumai code block
+\`\`\`
+
+### unordered list
+* porumai
+* amaidhi
+* patience
+
+### ordered list
+1. porumai
+2. amaidhi
+3. patience
+
+[] porumai
+[] amaidhi
+[x] patience
+> porumai **patience** *amaidhi*
+
+porumai **patience** *amaidhi*
+`
+
 /* const complex_input = [
   {
     type: 'blockquote',
@@ -417,34 +443,12 @@ const single_line_variation = [
 ] */
 
 describe('Slate => Markdown, works fine', () => {
-  test('parser is working fine', () => {
-    const EXPECTED = `porumai
-
-> wait and hope
-
-\`\`\`
-porumai code block
-\`\`\`
-
-### unordered list
-* porumai
-* amaidhi
-* patience
-
-### ordered list
-1. porumai
-2. amaidhi
-3. patience
-
-[] porumai
-[] amaidhi
-[x] patience
-> porumai **patience** *amaidhi*
-
-porumai **patience** *amaidhi*
-`
-
+  test('parser is working fine (sync)', () => {
     console.log('porumai ... transformed ', plateToMarkdown(sample_input))
     expect(plateToMarkdown(sample_input)).toEqual(EXPECTED)
+  })
+
+  test('parser is working fine (async)', () => {
+    expect(plateToMarkdownAsync(sample_input)).resolves.toEqual(EXPECTED)
   })
 })

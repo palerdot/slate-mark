@@ -37,7 +37,7 @@ export function isHeading(node: SlateNode): boolean {
  * h6 => ###### text \n
  */
 
-function parse(input: LeafChildren, type: string) {
+function parse(input: LeafChildren, type: string): string {
   const text = parseMarks(input)
 
   // # Heading 1

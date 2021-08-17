@@ -54,6 +54,11 @@ export function parseMark(input: LeafNode): string {
     text: input.text,
   }
 
+  // we will deal with empty mark first
+  if (finalText.text.trim() === '') {
+    return ''
+  }
+
   // we will go through every iteration
 
   // Bold

@@ -14,7 +14,10 @@ import { parseMarks } from './mark'
   },
  */
 export function isParagraph(node: SlateNode): boolean {
-  return isLeaf(node.children) && node.type === NodeType.Paragraph
+  return (
+    isLeaf(node.children) &&
+    (node.type === NodeType.Paragraph || node.type === NodeType.Default)
+  )
 }
 
 /*

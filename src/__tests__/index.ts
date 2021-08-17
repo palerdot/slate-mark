@@ -293,9 +293,12 @@ const sample_input = [
   },
 ]
 
-const EXPECTED = `porumai
+const EXPECTED = `
+porumai
 
 > wait and hope
+
+\`amaidhi\`
 
 \`\`\`
 porumai code block
@@ -306,17 +309,21 @@ porumai code block
 * amaidhi
 * patience
 
+
 ### ordered list
 1. porumai
 2. amaidhi
 3. patience
 
+
 [] porumai
 [] amaidhi
 [x] patience
+
 > porumai **patience** *amaidhi*
 
 porumai **patience** *amaidhi*
+
 `
 
 /* const complex_input = [
@@ -449,6 +456,8 @@ describe('Slate => Markdown, works fine', () => {
   })
 
   test('parser is working fine (async)', () => {
-    expect(plateToMarkdownAsync(sample_input)).resolves.toEqual(EXPECTED)
+    // make sure to return the assertion
+    // ref: https://jestjs.io/docs/asynchronous
+    return expect(plateToMarkdownAsync(sample_input)).resolves.toEqual(EXPECTED)
   })
 })

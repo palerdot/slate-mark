@@ -25,3 +25,4 @@ browser-test.html
 jest.config.js
 yarn.lock
 *.code-workspace
+.husky

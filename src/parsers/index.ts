@@ -41,12 +41,13 @@ function transformNode(node: SlateNode): string {
     return blockQuoteParser(node.children)
   }
 
+  if (isActionItem(node)) {
+    return actionItemParser(node.children, !!node.checked)
+  }
+
   // first going through leaf nodes
   if (isLeaf(node.children)) {
     // Action item
-    if (isActionItem(node)) {
-      return actionItemParser(node.children, !!node.checked)
-    }
 
     // Code Block
     if (isCodeBlock(node)) {

@@ -1,5 +1,4 @@
-import { NodeType, SlateNode, isLeaf, LeafChildren } from '../utils'
-import { parseMarks } from './mark'
+import { NodeType, SlateNode, Children, recurseParse } from '../utils'
 
 /*  
 
@@ -35,7 +34,7 @@ import { parseMarks } from './mark'
 */
 
 export function isActionItem(node: SlateNode): boolean {
-  return node.type === NodeType.ActionItem && isLeaf(node.children)
+  return node.type === NodeType.ActionItem
 }
 
 /*
@@ -46,10 +45,13 @@ export function isActionItem(node: SlateNode): boolean {
  * [x] Checked \n
  */
 
-function parse(input: LeafChildren, checked: boolean): string {
-  const prefix = checked ? '[x]' : '[ ]'
+function parse(input: Children, checked: boolean): string {
+  const PREFIX = checked ? '[x] ' : '[ ] '
+  const SUFFIX = '\n'
 
-  return `${prefix} ${parseMarks(input)}\n`
+  const content = recurseParse(input)
+
+  return `${PREFIX}${content}${SUFFIX}`
 }
 
 export default parse

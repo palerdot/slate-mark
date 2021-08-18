@@ -5,7 +5,7 @@
  * - parses the identified node type depending on type to final string
  *
  */
-import { SlateNode, isLeaf } from '../utils'
+import { SlateNode } from '../utils'
 
 // individual parsers
 import paragraphParser, { isParagraph } from './paragraph'

@@ -50,14 +50,14 @@ function transformNode(node: SlateNode): string {
     return codeBlockParser(node.children)
   }
 
+  // Heading
+  if (isHeading(node)) {
+    return headingParser(node.children, node.type)
+  }
+
   // first going through leaf nodes
   if (isLeaf(node.children)) {
     // Action item
-
-    // Heading
-    if (isHeading(node)) {
-      return headingParser(node.children, node.type)
-    }
 
     // Paragraph
     if (isParagraph(node)) {
@@ -67,26 +67,6 @@ function transformNode(node: SlateNode): string {
     // some unhandled leaf node
     return ``
   }
-
-  // we have recursive nodes
-  // for example 'paragraph' within 'blockquote'
-  /*  
-  
-  {
-    type: 'blockquote',
-    children: [
-      {
-        type: 'p',
-        children: [
-          {
-            text: 'wait and hope',
-          },  
-        ]
-      }
-    ]
-  }
-  
-  */
 
   return ``
 }

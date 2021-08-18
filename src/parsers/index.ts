@@ -55,17 +55,9 @@ function transformNode(node: SlateNode): string {
     return headingParser(node.children, node.type)
   }
 
-  // first going through leaf nodes
-  if (isLeaf(node.children)) {
-    // Action item
-
-    // Paragraph
-    if (isParagraph(node)) {
-      return paragraphParser(node.children)
-    }
-
-    // some unhandled leaf node
-    return ``
+  // Paragraph
+  if (isParagraph(node)) {
+    return paragraphParser(node.children)
   }
 
   return ``

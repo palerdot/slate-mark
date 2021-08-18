@@ -1,4 +1,12 @@
-import { NodeType, SlateNode, isLeaf, isLeafNode, Children } from '../utils'
+import {
+  NodeType,
+  SlateNode,
+  isLeaf,
+  isLeafNode,
+  Children,
+  getNonLeafNodes,
+  recurseParse,
+} from '../utils'
 import { parseMarks } from './mark'
 import { parseNodes } from '../parsers'
 
@@ -45,40 +53,7 @@ function parse(input: Children): string {
   const PREFIX = `> `
   const SUFFIX = '\n\n'
 
-  let content = ''
-
-  if (isLeaf(input)) {
-    /*  
-      // variation 1
-      [
-        {
-          text: 'wait and hope',
-        },
-      ],
-     */
-
-    content = parseMarks(input)
-  } else {
-    /*  
-      // variation 2
-      [
-          {
-            type: 'p',
-            children: [
-              {
-                text: 'wait and hope',
-              },  
-            ]
-          }
-      ]
-    */
-
-    const nonLeafNodes: Array<SlateNode> = input.filter((a): a is SlateNode => {
-      return !isLeafNode(a)
-    })
-
-    content = parseNodes(nonLeafNodes)
-  }
+  const content = recurseParse(input)
 
   return `${PREFIX}${content}${SUFFIX}`
 }

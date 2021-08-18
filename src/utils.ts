@@ -1,3 +1,6 @@
+import { parseNodes } from './parsers'
+import { parseMarks } from './parsers/mark'
+
 export enum NodeType {
   Default = 'p',
   Paragraph = 'paragraph',
@@ -66,4 +69,28 @@ export function isLeafNode(input: LeafNode | SlateNode): input is LeafNode {
   const ownProperties = Object.getOwnPropertyNames(input)
 
   return ownProperties.includes('text') && !ownProperties.includes('type')
+}
+
+// user defined type predicate to return all non leaf nodes
+export function getNonLeafNodes(input: Children): Array<SlateNode> {
+  return input.filter((a): a is SlateNode => {
+    return !isLeafNode(a)
+  })
+}
+
+// parse nodes recursively
+// used by block parsers like blockquote/paragraph etc
+export function recurseParse(input: Children): string {
+  let content = ''
+
+  if (isLeaf(input)) {
+    // dealing with leaf nodes
+    content = parseMarks(input)
+  } else {
+    // we are going one level deep
+    // this should cut down recursion
+    content = parseNodes(getNonLeafNodes(input))
+  }
+
+  return content
 }

@@ -26,7 +26,7 @@ export function isParagraph(node: SlateNode): boolean {
  */
 
 function parse(input: Children): string {
-  return `${recurseParse(input)}\n`
+  return `${recurseParse(input)}\n\n`
 }
 
 export default parse

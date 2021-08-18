@@ -22,9 +22,10 @@
     "clean": "rm -rf dist build package",
     "ts-node": "ts-node",
     "docs": "typedoc --entryPoints src/index.ts",
-    "build": "tsc -p tsconfig.json",
+    "prepare-build": "tsc -p tsconfig.json",
+    "build": "npm run prepare-build && npm run copy",
     "install-peers": "install-self-peers -- --ignore-scripts",
-    "prepare": "npm run build && npm run copy && husky install",
+    "prepare": "npm run build && husky install",
     "release": "np",
     "dryrun": "npm pack",
     "copy": "cp package.json dist/ && cp README.md dist/"

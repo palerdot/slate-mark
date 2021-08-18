@@ -299,16 +299,12 @@ const sample_input = [
   },
 ]
 
-const EXPECTED = `porumai
-
-
-
+const EXPECTED = `porumai  
+  
 > wait and hope
 
-\`amaidhi\`
-
-
-
+\`amaidhi\`  
+  
 \`\`\`
 porumai code block
 \`\`\`
@@ -318,30 +314,24 @@ porumai code block
 * amaidhi
 * patience
 
-
-
+  
 ### ordered list
 1. porumai
 2. amaidhi
 3. patience
 
-
-
+  
 [ ] porumai
 [ ] amaidhi
 [x] patience
-
-
-> wait and hope ... (nested paragraph within blockquote)
-
+  
+> wait and hope ... (nested paragraph within blockquote)  
 
 
 > porumai **patience** *amaidhi*
 
-porumai **patience** *amaidhi*
-
-
-
+porumai **patience** *amaidhi*  
+  
 `
 
 /* const complex_input = [

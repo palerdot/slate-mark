@@ -26,7 +26,11 @@ export function isParagraph(node: SlateNode): boolean {
  */
 
 function parse(input: Children): string {
-  return `${recurseParse(input)}\n\n`
+  // To force a line return, place two empty spaces at the end of a line.
+  // we have two spaces in first and second line
+  const ENDING = `  \n`
+
+  return `${recurseParse(input)}${ENDING}`
 }
 
 export default parse

@@ -1,14 +1,4 @@
-import {
-  NodeType,
-  SlateNode,
-  isLeaf,
-  isLeafNode,
-  Children,
-  getNonLeafNodes,
-  recurseParse,
-} from '../utils'
-import { parseMarks } from './mark'
-import { parseNodes } from '../parsers'
+import { NodeType, SlateNode, Children, recurseParse } from '../utils'
 
 /*  
   blockquote detection

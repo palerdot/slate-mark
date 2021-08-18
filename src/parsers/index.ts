@@ -45,14 +45,14 @@ function transformNode(node: SlateNode): string {
     return actionItemParser(node.children, !!node.checked)
   }
 
+  // Code Block
+  if (isCodeBlock(node)) {
+    return codeBlockParser(node.children)
+  }
+
   // first going through leaf nodes
   if (isLeaf(node.children)) {
     // Action item
-
-    // Code Block
-    if (isCodeBlock(node)) {
-      return codeBlockParser(node.children)
-    }
 
     // Heading
     if (isHeading(node)) {

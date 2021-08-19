@@ -1,4 +1,4 @@
-import { LeafNode, LeafChildren } from '../utils'
+import { LeafNode, LeafChildren, spacer } from '../utils'
 
 /*
  * Mark (main text parser)
@@ -54,8 +54,23 @@ export function parseMark(input: LeafNode): string {
     text: input.text,
   }
 
+  // BUG: EDGE CASE
+  // slate collapses individual empty paragraphs into
+  // { text: " \n \n \n \n " }
+  // also replaces our "<SPACE><SPACE>\n" to "<SPACE>\n"
+  const isBlankLine = finalText.text.trim() === ''
+
+  if (isBlankLine && input.text.includes('\n')) {
+    // we will return the text as is
+    // for as many new lines we are replacing with our spacer
+    return input.text
+      .split('\n')
+      .map(() => spacer)
+      .join('')
+  }
+
   // we will deal with empty mark first
-  if (finalText.text.trim() === '') {
+  if (isBlankLine) {
     return ''
   }
 

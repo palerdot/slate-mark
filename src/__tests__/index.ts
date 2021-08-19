@@ -299,7 +299,11 @@ const sample_input = [
   },
 ]
 
-const spacer = '&nbsp;&nbsp;'
+// actual spacer is <SPACE><SPACE>\n
+// for legibility purposes we will just encode <SPACE><SPACE>
+// and insert an actual new line in test assertion
+// since we have tilde blocks actual new line in text will be counted
+const spacer = '  '
 
 const EXPECTED = `porumai${spacer}
 ${spacer}

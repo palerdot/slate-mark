@@ -41,7 +41,9 @@ export function isBlockQuote(node: SlateNode): boolean {
 
 function parse(input: Children): string {
   const PREFIX = `> `
-  const SUFFIX = '\n\n'
+  // IMPORTANT: insert two new lines to prevent blank lines
+  // following blockquote to be included
+  const SUFFIX = `\n\n`
 
   const content = recurseParse(input)
 

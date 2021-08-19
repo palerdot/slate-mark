@@ -30,6 +30,9 @@ function parse(input: Children): string {
   const FENCE = '```'
   const content = recurseParse(input)
 
+  // IMPORTANT: insert two new lines to prevent
+  // following blank lines to be included in codeblock
+
   return `${FENCE}\n${content}\n${FENCE}\n\n`
 }
 

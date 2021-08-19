@@ -94,3 +94,5 @@ export function recurseParse(input: Children): string {
 
   return content
 }
+
+export const spacer = `  \n`

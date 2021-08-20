@@ -71,7 +71,9 @@ export function parseMark(input: LeafNode): string {
 
   // we will deal with empty mark first
   if (isBlankLine) {
-    return ''
+    // do not wrap with marks
+    // but return exact text (with exact whitespaces)
+    return input.text
   }
 
   // we will go through every iteration

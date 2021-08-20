@@ -94,7 +94,7 @@ function isProperListElement(children: Children): children is ListElement {
         type: 'li',
         children: [
           {
-            type: 'lic',
+            type: 'lic/p',
             children: [
               {
                 text: 'paience',
@@ -111,12 +111,12 @@ function isProperListElement(children: Children): children is ListElement {
 function checkListType(children: Children): children is ListElement {
   // Checks:
 
-  // - each 'li' should have exactly one 'lic' children
+  // - each 'li' should have exactly one 'lic' children / or one 'p' element
 
   /*  
     children: [
       {
-        type: 'lic',
+        type: 'lic/p',
         children: [
           {
             text: 'porumai',
@@ -143,7 +143,12 @@ function checkListType(children: Children): children is ListElement {
   }
 
   // should be of type 'lic'
-  if (firstLicChild.type !== NodeType.ListChild) {
+  // or of type 'p'
+  const isListChild = firstLicChild.type === NodeType.ListChild
+  const isDefaultChild = firstLicChild.type === NodeType.Default
+  const isValidChild = isListChild || isDefaultChild
+
+  if (!isValidChild) {
     return false
   }
 

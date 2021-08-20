@@ -124,7 +124,8 @@ const sample_input = [
         type: 'li',
         children: [
           {
-            type: 'lic',
+            // slate can also give a 'p' type
+            type: 'p',
             children: [
               {
                 text: 'patience',

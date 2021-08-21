@@ -1,7 +1,7 @@
 import type { TNode } from '@udecode/plate-core'
 
 import { parseNodes } from './parsers'
-import { SlateNode, LeafNode, isLeafNode } from './utils'
+import { SlateNode, LeafNode, isLeafNode, isLeaf } from './utils'
 
 export const plateToMarkdown = (input: Array<TNode>): string => {
   return parseNodes(input)
@@ -16,4 +16,4 @@ export const plateToMarkdownAsync = (input: Array<TNode>): Promise<string> => {
 }
 
 // export extra utils
-export { SlateNode, LeafNode, isLeafNode }
+export { SlateNode, LeafNode, isLeafNode, isLeaf }

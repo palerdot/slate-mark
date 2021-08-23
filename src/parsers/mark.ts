@@ -39,6 +39,16 @@ function parseItalicText({ text }: LeafNode): string {
   return `*${text}*`
 }
 
+function parseStrikeThroughText({ text }: LeafNode): string {
+  // edge case:
+  // if we have a trailing space, do not wrap it with mark
+  if (text.endsWith(' ')) {
+    return `~~${text.slice(0, -1)}~~ `
+  }
+
+  return `~~${text}~~`
+}
+
 function parseInlineCode({ text }: LeafNode): string {
   // edge case:
   // if we have a trailing space, do not wrap it with mark
@@ -86,6 +96,11 @@ export function parseMark(input: LeafNode): string {
   // Italic
   if (input.italic) {
     finalText.text = parseItalicText(finalText)
+  }
+
+  // strikethrough
+  if (input.strikethrough) {
+    finalText.text = parseStrikeThroughText(finalText)
   }
 
   // Inline code

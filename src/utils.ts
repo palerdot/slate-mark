@@ -30,6 +30,7 @@ interface Mark {
   code?: boolean
   italic?: boolean
   bold?: boolean
+  strikethrough?: boolean
 }
 
 export interface LeafNode extends Mark {

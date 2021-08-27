@@ -101,7 +101,11 @@ const sample_input = [
             type: 'lic',
             children: [
               {
-                text: 'porumai',
+                text: 'porumai ',
+              },
+              {
+                text: 'bold list item',
+                bold: true,
               },
             ],
           },
@@ -317,7 +321,7 @@ porumai code block
 \`\`\`
 
 ### unordered list
-* porumai
+* porumai **bold list item**
 * amaidhi
 * patience
 
@@ -328,9 +332,9 @@ ${spacer}
 3. patience
 
 ${spacer}
-[ ] porumai
-[ ] amaidhi
-[x] patience
+* [ ] porumai
+* [ ] amaidhi
+* [x] patience
 ${spacer}
 > wait and hope ... (nested paragraph within blockquote)${spacer}
 

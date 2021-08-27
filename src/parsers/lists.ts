@@ -6,7 +6,7 @@ import {
   isLeafNode,
   Children,
 } from '../utils'
-import { parseMark } from './mark'
+import { parseMarks } from './mark'
 
 type ListChild = {
   type: NodeType.ListChild
@@ -208,7 +208,7 @@ function parse(node: SlateNode): string {
   // we will have a proper list
   // let us extract the list items (with formatting with marks if needed)
   const listItems = node.children.map(n => {
-    return parseMark(n.children[0].children[0])
+    return parseMarks(n.children[0].children)
   })
 
   let FINAL_TEXT = ``

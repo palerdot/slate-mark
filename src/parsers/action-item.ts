@@ -46,7 +46,7 @@ export function isActionItem(node: SlateNode): boolean {
  */
 
 function parse(input: Children, checked: boolean): string {
-  const PREFIX = checked ? '[x] ' : '[ ] '
+  const PREFIX = checked ? '* [x] ' : '* [ ] '
   const SUFFIX = '\n'
 
   const content = recurseParse(input)

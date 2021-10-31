@@ -14,11 +14,11 @@ porumai code block
 
 ### unordered list
 
-*   porumai
+-   porumai
     
-*   amaidhi
+-   amaidhi
     
-*   paience
+-   paience
     
 
 ### ordered list
@@ -321,9 +321,9 @@ porumai code block
 \`\`\`
 
 ### unordered list
-* porumai **bold list item**
-* amaidhi
-* patience
+- porumai **bold list item**
+- amaidhi
+- patience
 
 ${spacer}
 ### ordered list
